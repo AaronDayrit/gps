@@ -5,6 +5,18 @@
 // Aaron Dayrit
 
 /*----------------------
+    Window sizing
+------------------------*/
+
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+})
+
+/*----------------------
     Success function
 ------------------------*/
 
@@ -13,7 +25,8 @@ const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v11', // style URL
     center: [0,0,0], // starting position [lng, lat]
-    zoom: 10 // starting zoom
+    zoom: 10, // starting zoom
+    interactive: false
 });
 
 
@@ -30,9 +43,9 @@ const showLocation = (position) => {
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/streets-v11', // style URL
         center: [longitude,latitude,accuracy], // starting position [lng, lat]
-        zoom: 13, // starting zoom
+        zoom: 15, // starting zoom
         pitch: 0,
-        interactive: false
+        // interactive: false
     });    
 }
 
@@ -45,7 +58,7 @@ const errorHalnder = () => {
 
 if(navigator.geolocation){
     // High accuracy 
-    navigator.geolocation.getCurrentPosition(showLocation, errorHalnder, 
+    navigator.geolocation.watchPosition(showLocation, errorHalnder, 
         { enableHighAccuracy: true});
 }else{
     const map = new mapboxgl.Map({
@@ -56,12 +69,3 @@ if(navigator.geolocation){
         interactive: false
     });    
 }
-
-
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-window.addEventListener('resize', () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-})
