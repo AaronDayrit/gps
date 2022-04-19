@@ -33,7 +33,7 @@
         place-items: center;
     }
 
-      .pulsating-circle:before {
+      /* .pulsating-circle:before {
         content: '';
         position: relative;
         display: block;
@@ -45,7 +45,7 @@
         border-radius: 45px;
         background-color: #01a4e9;
         animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-      }
+      } */
 
       .pulsating-circle:after {
         content: '';
@@ -53,6 +53,7 @@
         display: block;
         width: 22px;
         height: 22px;
+        border: solid 4px #01a4e9;
         background-color: rgb(255, 255, 255);
         border-radius: 15px;
         box-shadow: 0 0 8px rgba(0,0,0,.3);
