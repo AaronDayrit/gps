@@ -31,7 +31,7 @@ const map = new mapboxgl.Map({
 
 
 
-const showLocation = (position) => {
+const getLocation = (position) => {
     const {longitude, latitude , accuracy} = position.coords;
 
     console.log(`longitude = ${longitude}`);
@@ -39,14 +39,7 @@ const showLocation = (position) => {
     console.log(`accuracy = ${accuracy} meters`);
 
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWFyb25kYXlyaXQiLCJhIjoiY2wxeHg5ZHFxMDc0czNjcDZjdmxidDlubiJ9.IIXeQk32XffEHB5CCsL3aQ';
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        center: [longitude,latitude,accuracy], // starting position [lng, lat]
-        zoom: 15, // starting zoom
-        pitch: 0,
-        // interactive: false
-    });    
+    map.setCenter([longitude,latitude,accuracy]);
 }
 
 /*----------------------
@@ -58,14 +51,14 @@ const errorHalnder = () => {
 
 if(navigator.geolocation){
     // High accuracy 
-    navigator.geolocation.watchPosition(showLocation, errorHalnder, 
+    navigator.geolocation.watchPosition(getLocation, errorHalnder, 
         { enableHighAccuracy: true});
 }else{
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        center: [0,0,0], // starting position [lng, lat]
-        zoom: 10, // starting zoom
-        interactive: false
-    });    
+    // const map = new mapboxgl.Map({
+    //     container: 'map', // container ID
+    //     style: 'mapbox://styles/mapbox/streets-v11', // style URL
+    //     center: [0,0,0], // starting position [lng, lat]
+    //     zoom: 10, // starting zoom
+    //     interactive: false
+    // });    
 }
