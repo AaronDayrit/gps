@@ -19,7 +19,12 @@
     <link rel="icon" href="assetimg/circle-outline-64.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-    <script src="assets/js/mappingLocation.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+
     <style>
 
     </style>
@@ -31,7 +36,9 @@
 
 
         <main>
-            
+            <div class="map" id='map'>
+                <div class="dot"></div>
+            </div>
         </main>
 
 </body>
